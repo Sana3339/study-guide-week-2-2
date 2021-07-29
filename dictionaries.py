@@ -116,6 +116,17 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
+    results_list = []
+    seen_nums = set()
+    numbers_set = set(numbers)
+
+    for num in numbers:
+        if -num in numbers_set and num not in seen_nums:
+            results_list.append([num, -num])
+            seen_nums.add(num)
+            seen_nums.add(-num)
+
+    return results_list
 
 
 def top_chars(phrase):
@@ -143,7 +154,26 @@ def top_chars(phrase):
 
     """
 
-    return []
+    string_dict = {}
+    max_freq = 0
+    most_freq_char_list = []
+
+    for char in phrase:
+        if char.isalpha():
+            if char in string_dict:
+                string_dict[char] += 1
+            else:
+                string_dict[char] = 1
+
+    max_freq = max(string_dict.values())
+
+    for char, frequency in string_dict.items():
+        if frequency == max_freq:
+            most_freq_char_list.append(char)
+
+    return sorted(most_freq_char_list)
+
+
 
 #####################################################################
 # You can ignore everything below this.
