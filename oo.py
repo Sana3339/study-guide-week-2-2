@@ -37,3 +37,15 @@ class Exam(object):
     def add_question(self, question):
 
         self.questions.append(question)
+
+    def administer(self):
+
+        correct_answers = 0
+
+        for question in self.questions:
+            if question.ask_and_evaluate():
+                correct_answers += 1
+
+        percentage_correct = (correct_answers/(len(self.questions))) * 100
+
+        return percentage_correct
