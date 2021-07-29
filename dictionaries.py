@@ -42,7 +42,11 @@ def without_duplicates(words):
         <class 'list'>
     """
 
-    return []
+    word_set = set(words)
+
+    word_list = list(word_set)
+
+    return word_list
 
 
 def find_unique_common_items(items1, items2):
@@ -77,8 +81,12 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
+    items1_set = set(items1)
+    items2_set = set(items2)
 
-    return set()
+    union_set = items2_set.intersection(items1_set)
+
+    return union_set
 
 
 def get_sum_zero_pairs(numbers):
@@ -108,7 +116,6 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    return []
 
 
 def top_chars(phrase):
@@ -154,4 +161,3 @@ if __name__ == "__main__":
     if doctest.testmod().failed == 0:
         print("*** ALL TESTS PASSED ***")
     print()
-
